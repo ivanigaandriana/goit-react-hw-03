@@ -1,0 +1,20 @@
+form{
+    padding: 19px;
+    border: 1px solid black;
+    width: 100%;
+}
+.formList{
+    display: flex;
+    flex-direction: column;
+}
+.formLabel{
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.formField{
+    padding: 5px;
+}
+button{
+    margin-top: 10px;
+}
