@@ -1,24 +1,19 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import ContactForm from './components/ContactForm/ContactForm';
 import ContactList from './components/ContactList/ContactList';
-import SearchBox from './components/SearchBox/SerchBox';
+import SearchBox from './components/SearchBox/SerchBox'
+
 import './App.css';
 
 function App() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(JSON.parse(localStorage.getItem('contacts')));
   const [filter, setFilter] = useState('');
 
-  useEffect(() => {
-    fetch('/contacts.json')
-      .then(response => response.json())
-      .then(data => setContacts(data))
-      .catch(error => console.error('Error fetching contacts:', error));
-  }, []);
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  });
 
   const addContact = (name, number) => {
     const newContact = {
@@ -26,6 +21,7 @@ function App() {
       name,
       number
     };
+    // Оновлюємо стан контактів і зберігаємо їх у локальному сховищі
     setContacts(prevContacts => [...prevContacts, newContact]);
   };
 
